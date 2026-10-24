@@ -395,3 +395,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
     Promise.all([fonts, ...images]).then(() => setTimeout(reveal, 60), reveal);
 })();
+
+(function () {
+    const footer = document.querySelector('.site-footer');
+    if (!footer) return;
+    const setFooterHeight = () => document.documentElement.style.setProperty('--footer-h', footer.offsetHeight + 'px');
+    setFooterHeight();
+    window.addEventListener('resize', setFooterHeight);
+    window.addEventListener('load', setFooterHeight);
+    if (window.ResizeObserver) new ResizeObserver(setFooterHeight).observe(footer);
+})();

@@ -1278,3 +1278,7 @@ html {
     height: 100lvh;
     min-height: 100%;
 }
+
+#contact.content-section {
+    min-height: calc(100svh - var(--footer-h, 0px));
+}
