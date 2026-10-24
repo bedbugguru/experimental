@@ -386,7 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 (function () {
     const root = document.documentElement;
-    const reveal = () => { root.classList.remove('is-loading'); window.__bbgReady = true; window.dispatchEvent(new Event('bbg-ready')); };
+    const reveal = () => { window.__bbgReady = true; window.dispatchEvent(new Event('bbg-ready')); };
     const imageReady = img => (img.complete ? Promise.resolve() :
         new Promise(res => { img.addEventListener('load', res, { once: true }); img.addEventListener('error', res, { once: true }); }));
     const images = [...document.querySelectorAll('main img, .site-footer img')]
