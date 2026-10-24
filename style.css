@@ -1282,3 +1282,19 @@ html {
 #contact.content-section {
     min-height: calc(100svh - var(--footer-h, 0px));
 }
+
+.full-bg-video-container {
+    background: #2a2226 url("images/video-poster.jpg") center / cover no-repeat;
+}
+
+@supports (-webkit-touch-callout: none) {
+    .full-bg-video-container {
+        inset: -60px 0 -220px;
+        height: auto;
+        min-height: 0;
+    }
+
+    html {
+        background: #2a2226 url("images/video-poster.jpg") center / cover no-repeat;
+    }
+}
