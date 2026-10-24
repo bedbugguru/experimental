@@ -1272,3 +1272,9 @@ html {
 .release-description {
     padding-inline: 4px;
 }
+
+.full-bg-video-container {
+    inset: 0;
+    height: 100lvh;
+    min-height: 100%;
+}
