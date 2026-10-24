@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#050505">
+    <meta name="description" content="Bed Bug Guru — San Francisco.">
+    <title>Bed Bug Guru</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
+</head>
+<body>
+    <div class="full-bg-video-container" aria-hidden="true">
+        <iframe
+            class="yt-bg-iframe"
+            id="yt-background-player"
+            src="https://www.youtube.com/embed/NnY4IhHhWPE?mute=1&amp;controls=0&amp;modestbranding=1&amp;disablekb=1&amp;fs=0&amp;iv_load_policy=3&amp;playsinline=1&amp;enablejsapi=1"
+            title="Bed Bug Guru background video"
+            tabindex="-1"
+            allow="autoplay; encrypted-media; picture-in-picture">
+        </iframe>
+        <div class="full-bg-overlay"></div>
+    </div>
+    <div class="screen-effects" aria-hidden="true"></div>
+    <button class="audio-toggle" type="button" aria-label="Turn background video audio on" aria-pressed="false" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="speaker-icon" d="M4 9v6h4l5 4V5L8 9H4Z"></path>
+            <path class="sound-waves" d="M16 9a5 5 0 0 1 0 6m3-9a9 9 0 0 1 0 12"></path>
+            <path class="muted-mark" d="m16 9 6 6m0-6-6 6"></path>
+        </svg>
+    </button>
+
+    <main>
+        <section id="home" class="hero page-section" aria-labelledby="hero-title">
+            <h1 id="hero-title" class="visually-hidden">Bed Bug Guru</h1>
+            <button class="hero-logo-button" type="button" aria-label="Bed Bug Guru logo; turn background video audio on">
+                <img class="hero-logo" src="images/bbglogo.png" alt="">
+            </button>
+            <figure class="hero-photo">
+                <img src="images/bed-bug-guru-live-photo.jpg" alt="Bed Bug Guru live band photo in San Francisco">
+                <figcaption class="photo-credit">Photo by Chloe Dasilva</figcaption>
+            </figure>
+        </section>
+
+        <nav class="direction-nav" aria-label="Main navigation">
+            <a class="glitch-hover" href="#home">Home</a>
+            <a class="glitch-hover" href="#shows">Shows</a>
+            <a class="glitch-hover" href="#music">Music</a>
+            <a class="glitch-hover" href="#merch">Merch</a>
+            <a class="glitch-hover" href="#contact">Contact</a>
+        </nav>
+
+        <section id="shows" class="page-section content-section" aria-labelledby="shows-title">
+            <h2 id="shows-title" class="section-title">Shows</h2>
+            <div class="tour-widget">
+                <a href="https://www.songkick.com/artists/10289853" class="songkick-widget"
+                    data-theme="dark" data-track-button="on" data-detect-style="off"
+                    data-background-color="rgb(5,5,5)" data-font-color="rgb(255,255,255)"
+                    data-button-bg-color="rgb(255,255,255)" data-button-text-color="rgb(5,5,5)"
+                    data-locale="en" data-other-artists="on" data-share-button="on"
+                    data-country-filter="on" data-rsvp="on" data-request-show="on"
+                    data-past-events="on" data-past-events-offtour="off" data-remind-me="off">
+                    Tour dates on Songkick
+                </a>
+            </div>
+
+            <h3 id="flyer-archive-title" class="subsection-title archive-title">Flyer Archive</h3>
+            <div id="flyer-archive-grid" class="flyer-grid flyer-archive-grid is-collapsed" role="region" aria-labelledby="flyer-archive-title" tabindex="-1"></div>
+            <div class="archive-toggle-wrap">
+                <button class="archive-toggle-btn" type="button" aria-expanded="false" aria-controls="flyer-archive-grid">
+                    Show More Archives ↓
+                </button>
+            </div>
+        </section>
+
+        <section id="music" class="page-section content-section" aria-labelledby="music-title">
+            <h2 id="music-title" class="section-title">Music</h2>
+            <article class="release-group featured-release" aria-labelledby="double-scoop-title">
+                <header class="release-header">
+                    <h3 id="double-scoop-title">Double Scoop</h3>
+                </header>
+                <a class="release-link glitch-hover" href="https://bedbugguru.bandcamp.com/" target="_blank" rel="noopener noreferrer" aria-label="Listen to Double Scoop on Bandcamp">
+                    <img src="https://assets.bigcartel.com/product_images/425018040/double+scoop+album.jpeg?auto=format&amp;fit=max&amp;w=1400"
+                        alt="Bed Bug Guru - Double Scoop album artwork" loading="lazy">
+                    <span class="release-action">Listen on Bandcamp</span>
+                </a>
+                <p class="release-description">Our debut album, recorded live to tape at Atomic Garden in Oakland, California, by Jack Shirley. Released November 7, 2025 on Superbloom Records. You’re already listening to it.</p>
+            </article>
+            <article class="release-group" aria-labelledby="singles-title">
+                <header class="release-header">
+                    <h3 id="singles-title">Singles</h3>
+                </header>
+                <div class="singles-content">
+                    <ol class="track-list">
+                        <li class="track-item">
+                            <a class="track-art glitch-hover" href="https://bedbugguru.bandcamp.com/track/brand-new" target="_blank" rel="noopener noreferrer" aria-label="Listen to Brand New on Bandcamp">
+                                <img src="images/music/brand-new.jpg" alt="Brand New single artwork" loading="lazy">
+                            </a>
+                            <span class="track-number">01</span>
+                            <span class="track-title">Brand New</span>
+                            <a href="https://bedbugguru.bandcamp.com/track/brand-new" target="_blank" rel="noopener noreferrer" class="bandcamp-link">Listen on Bandcamp</a>
+                        </li>
+                        <li class="track-item">
+                            <a class="track-art glitch-hover" href="https://bedbugguru.bandcamp.com/track/expired" target="_blank" rel="noopener noreferrer" aria-label="Listen to Expired on Bandcamp">
+                                <img src="images/music/expired.jpg" alt="Expired single artwork" loading="lazy">
+                            </a>
+                            <span class="track-number">02</span>
+                            <span class="track-title">Expired</span>
+                            <a href="https://bedbugguru.bandcamp.com/track/expired" target="_blank" rel="noopener noreferrer" class="bandcamp-link">Listen on Bandcamp</a>
+                        </li>
+                        <li class="track-item">
+                            <a class="track-art glitch-hover" href="https://bedbugguru.bandcamp.com/album/hazy" target="_blank" rel="noopener noreferrer" aria-label="Listen to Hazy on Bandcamp">
+                                <img src="images/music/hazy.jpg" alt="Hazy single artwork" loading="lazy">
+                            </a>
+                            <span class="track-number">03</span>
+                            <span class="track-title">Hazy</span>
+                            <a href="https://bedbugguru.bandcamp.com/album/hazy" target="_blank" rel="noopener noreferrer" class="bandcamp-link">Listen on Bandcamp</a>
+                        </li>
+                        <li class="track-item">
+                            <a class="track-art glitch-hover" href="https://bedbugguru.bandcamp.com/track/tightrope" target="_blank" rel="noopener noreferrer" aria-label="Listen to Tightrope on Bandcamp">
+                                <img src="images/music/tightrope.jpg" alt="Tightrope single artwork" loading="lazy">
+                            </a>
+                            <span class="track-number">04</span>
+                            <span class="track-title">Tightrope</span>
+                            <a href="https://bedbugguru.bandcamp.com/track/tightrope" target="_blank" rel="noopener noreferrer" class="bandcamp-link">Listen on Bandcamp</a>
+                        </li>
+                    </ol>
+                    <p class="release-description">Our first four singles, released in 2022–2023: “Brand New” and “Expired” were recorded at home by Shane Malone, and mixed and mastered by Taylor Paul Neal. “Hazy” and “Tightrope” were recorded at Pine Studios in Murray Hill, Jacksonville, Florida, by Drew Portalatin, who also mixed and mastered them.</p>
+                </div>
+            </article>
+        </section>
+
+        <section id="merch" class="page-section content-section" aria-labelledby="merch-title">
+            <h2 id="merch-title" class="section-title">Merch</h2>
+            <div class="merch-grid">
+                <article class="merch-card">
+                    <img src="https://assets.bigcartel.com/product_images/425018040/double+scoop+album.jpeg?auto=format&amp;fit=max&amp;w=1400" alt="Bed Bug Guru Double Scoop vinyl artwork" loading="lazy">
+                    <h3>Double Scoop Vinyl</h3>
+                    <a href="https://bed-bug-guru.bigcartel.com/product/double-scoop-vinyl" target="_blank" rel="noopener noreferrer">View &amp; buy</a>
+                </article>
+                <article class="merch-card">
+                    <img src="https://assets.bigcartel.com/product_images/425016705/IMG_5161.jpeg?auto=format&amp;fit=max&amp;w=1400" alt="Bed Bug Guru Tee 01" loading="lazy">
+                    <h3>BBG Tee 01</h3>
+                    <a href="https://bed-bug-guru.bigcartel.com/product/bbg-tee-01" target="_blank" rel="noopener noreferrer">View &amp; buy</a>
+                </article>
+                <article class="merch-card">
+                    <img src="https://assets.bigcartel.com/product_images/425018106/Totes+Mock.png?auto=format&amp;fit=max&amp;w=1400" alt="Bed Bug Guru Tote Bag 04 merchandise" loading="lazy">
+                    <h3>Tote Bag 04</h3>
+                    <a href="https://bed-bug-guru.bigcartel.com/product/tote-bag-04-design" target="_blank" rel="noopener noreferrer">View &amp; buy</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="page-section content-section" aria-labelledby="contact-title">
+            <h2 id="contact-title" class="section-title">Contact</h2>
+            <address class="contact-details">
+                <a href="https://www.instagram.com/bedbugguru/" target="_blank" rel="noopener noreferrer">Message us on Instagram</a>
+                <span>San Francisco, CA</span>
+            </address>
+            <div class="press-photo-carousel" role="region" aria-label="Bed Bug Guru press photos">
+                <button class="press-photo-arrow previous" type="button" aria-label="Previous photo">‹</button>
+                <div class="press-photo-stage">
+                    <figure class="press-photo" aria-hidden="false">
+                        <img src="images/press-live-photo-03.jpg" alt="Bed Bug Guru performing live in a dark room with projected video" loading="lazy">
+                        <figcaption class="press-photo-credit">Photo by Chloe Dasilva</figcaption>
+                    </figure>
+                    <figure class="press-photo" aria-hidden="true" hidden>
+                        <img src="images/press-live-photo-02.jpg" alt="Bed Bug Guru performing live under green and purple stage lights" loading="lazy">
+                        <figcaption class="press-photo-credit">Photo by Chloe Dasilva</figcaption>
+                    </figure>
+                    <figure class="press-photo" aria-hidden="true" hidden>
+                        <img src="images/press-live-photo-04.jpg" alt="A grainy, green-lit view of a musician performing on a dark stage" loading="lazy">
+                        <figcaption class="press-photo-credit">Photo by Chloe Dasilva</figcaption>
+                    </figure>
+                    <figure class="press-photo" aria-hidden="true" hidden>
+                        <img src="images/bed-bug-guru-live-photo.jpg" alt="Bed Bug Guru live band photo in San Francisco" loading="lazy">
+                        <figcaption class="press-photo-credit">Photo by Chloe Dasilva</figcaption>
+                    </figure>
+                </div>
+                <button class="press-photo-arrow next" type="button" aria-label="Next photo">›</button>
+            </div>
+            <nav class="streaming-links contact-social-links" aria-label="Follow Bed Bug Guru">
+                <a class="glitch-hover" href="https://bedbugguru.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</a>
+                <a class="glitch-hover" href="https://open.spotify.com/search/Bed%20Bug%20Guru" target="_blank" rel="noopener noreferrer">Spotify</a>
+                <a class="glitch-hover" href="https://music.apple.com/us/artist/bed-bug-guru/1629092367" target="_blank" rel="noopener noreferrer">Apple Music</a>
+                <a class="glitch-hover" href="https://www.youtube.com/channel/UCsXCQJ92VphwA2nVXMEA1rQ" target="_blank" rel="noopener noreferrer">YouTube</a>
+                <a class="glitch-hover" href="https://www.instagram.com/bedbugguru/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </nav>
+        </section>
+    </main>
+
+    <footer class="site-footer">© BBG 2026</footer>
+    <dialog class="flyer-viewer" aria-label="Full-size flyer preview">
+        <button class="flyer-viewer-close" type="button" aria-label="Close flyer preview">×</button>
+        <img class="flyer-viewer-image" alt="">
+    </dialog>
+    <script src="script.js"></script>
+</body>
+</html>
