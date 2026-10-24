@@ -143,14 +143,24 @@ document.addEventListener('DOMContentLoaded', () => {
             archiveToggle.textContent = expanded ? 'Show Less ↑' : 'Show More Archives ↓';
             updateVisibleFlyers();
 
+            updateFloating();
+
             if (!expanded) {
                 const collapsedGridHeight = flyerArchive.getBoundingClientRect().height;
                 const collapsedGridBottom = expandedGridTop + collapsedGridHeight;
                 if (previousScrollY > collapsedGridBottom) {
-                    navigateToSection(document.getElementById('music'));
+                    archiveTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             }
         });
+
+        function updateFloating() {
+            const rect = flyerArchive.getBoundingClientRect();
+            const floating = expanded && rect.top < window.innerHeight - 80;
+            archiveToggleWrap.classList.toggle('is-floating', floating);
+        }
+        window.addEventListener('scroll', updateFloating, { passive: true });
+        window.addEventListener('resize', updateFloating);
     }
 
     document.querySelectorAll('.press-photo-carousel').forEach(carousel => {
