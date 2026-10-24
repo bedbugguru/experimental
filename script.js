@@ -100,9 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'flyer-card';
             card.hidden = true;
             link.href = imagePath;
-            link.setAttribute('aria-label', `Expand Bed Bug Guru show flyer from ${date}`);
+            link.setAttribute('aria-label', `Expand bed bug guru show flyer from ${date}`);
             image.src = imagePath;
-            image.alt = `Bed Bug Guru show flyer, ${date}`;
+            image.alt = `bed bug guru show flyer, ${date}`;
             image.loading = 'lazy';
             image.draggable = false;
 
@@ -140,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
             expanded = !expanded;
             archiveToggle.setAttribute('aria-expanded', String(expanded));
             flyerArchive.classList.toggle('is-collapsed', !expanded);
-            archiveToggleWrap.classList.toggle('is-floating', expanded);
             archiveToggle.textContent = expanded ? 'Show Less ↑' : 'Show More Archives ↓';
             updateVisibleFlyers();
 
@@ -213,10 +212,15 @@ document.addEventListener('DOMContentLoaded', () => {
                             audioToggle.setAttribute('aria-label', 'Play background video with audio');
                         } else {
                             videoPlayer.playVideo();
-                            setVideoPlaying(true);
                         }
                     },
                     onStateChange: event => {
+                        if (
+                            (event.data === window.YT.PlayerState.UNSTARTED || event.data === window.YT.PlayerState.CUED) &&
+                            !prefersReducedMotion.matches
+                        ) {
+                            setTimeout(() => videoPlayer.playVideo(), 400);
+                        }
                         if (event.data === window.YT.PlayerState.PLAYING) {
                             setVideoPlaying(true);
                         } else if (
@@ -233,6 +237,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         };
+
+        const startOnGesture = () => {
+            if (videoPlayer && !videoPlaying && !prefersReducedMotion.matches) {
+                if (videoMuted) {
+                    videoPlayer.mute();
+                }
+                videoPlayer.playVideo();
+            }
+        };
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                startOnGesture();
+            }
+        });
+        ['touchend', 'pointerup', 'click', 'keydown'].forEach(type =>
+            window.addEventListener(type, startOnGesture, { passive: true }));
 
         audioToggle.addEventListener('click', () => {
             if (!videoPlayer) {
@@ -296,12 +316,34 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.location.hash !== hash) {
             window.history.pushState(null, '', hash);
         }
-        const navHeight = directionNav?.getBoundingClientRect().height ?? 0;
-        const targetTop = target.getBoundingClientRect().top + window.scrollY - navHeight;
-        window.scrollTo({
-            top: Math.max(0, targetTop),
-            behavior: 'instant'
-        });
+        const targetTop = Math.max(0, target.getBoundingClientRect().top + window.scrollY);
+        smoothScrollTo(targetTop);
+    }
+
+    let scrollFrame = 0;
+    function smoothScrollTo(top) {
+        cancelAnimationFrame(scrollFrame);
+        const start = window.scrollY;
+        const distance = top - start;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduceMotion || Math.abs(distance) < 2) {
+            window.scrollTo({ top, left: 0, behavior: 'instant' });
+            return;
+        }
+        const duration = Math.min(1800, 700 + Math.abs(distance) * 0.35);
+        const startTime = performance.now();
+        const ease = t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+        const cancel = () => cancelAnimationFrame(scrollFrame);
+        ['wheel', 'touchstart', 'keydown'].forEach(type =>
+            window.addEventListener(type, cancel, { once: true, passive: true }));
+        const step = now => {
+            const t = Math.min(1, (now - startTime) / duration);
+            window.scrollTo({ top: start + distance * ease(t), left: 0, behavior: 'instant' });
+            if (t < 1) {
+                scrollFrame = requestAnimationFrame(step);
+            }
+        };
+        scrollFrame = requestAnimationFrame(step);
     }
 
     directionNav?.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -316,3 +358,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+(function () {
+    const v = document.querySelector('video.bg-loop');
+    if (!v) return;
+    v.muted = true;
+    v.addEventListener('playing', () => v.classList.add('is-playing'));
+    v.addEventListener('pause', () => v.classList.remove('is-playing'));
+    ['loadedmetadata', 'canplay', 'suspend', 'stalled'].forEach(e => v.addEventListener(e, () => { if (v.paused) go(); }));
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function go() { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+    go();
+    ['touchend', 'pointerup', 'click', 'scroll', 'touchmove'].forEach(e =>
+        window.addEventListener(e, () => { if (v.paused) go(); }, { once: true, passive: true }));
+    document.addEventListener('visibilitychange', () => { if (!document.hidden && v.paused) go(); });
+})();
+
+(function () {
+    const root = document.documentElement;
+    const reveal = () => { root.classList.remove('is-loading'); window.__bbgReady = true; window.dispatchEvent(new Event('bbg-ready')); };
+    const imageReady = img => (img.complete ? Promise.resolve() :
+        new Promise(res => { img.addEventListener('load', res, { once: true }); img.addEventListener('error', res, { once: true }); }));
+    const images = [...document.querySelectorAll('main img, .site-footer img')]
+        .filter(img => img.offsetParent !== null && (img.loading !== 'lazy' || img.getBoundingClientRect().top < innerHeight))
+        .map(imageReady);
+    const fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+    Promise.all([fonts, ...images]).then(() => setTimeout(reveal, 60), reveal);
+})();

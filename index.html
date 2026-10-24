@@ -2,23 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#050505">
-    <meta name="description" content="Bed Bug Guru — San Francisco.">
-    <title>Bed Bug Guru</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#4a3a3a">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description" content="bed bug guru — San Francisco.">
+    <script>document.documentElement.classList.add("is-loading");setTimeout(function(){document.documentElement.classList.remove("is-loading")},6000)</script>
+    <title>bed bug guru</title>
+    <meta name="application-name" content="bed bug guru">
+    <meta name="apple-mobile-web-app-title" content="bed bug guru">
+    <meta property="og:site_name" content="bed bug guru">
+    <meta property="og:title" content="bed bug guru">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="images/video-poster.jpg">
+    <link rel="preconnect" href="https://www.youtube.com">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
 </head>
 <body>
+    <div id="skull-loader" aria-hidden="true"><div class="skull-bg"></div><pre id="skull"></pre><div class="skull-ha">ha ha ha</div></div>
     <div class="full-bg-video-container" aria-hidden="true">
+        <img class="bg-loop bg-fallback" src="images/bg-fallback.gif" alt="">
+        <video class="bg-loop" webkit-playsinline disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noremoteplayback" tabindex="-1" src="images/bg-loop.mp4" poster="images/video-poster.jpg" autoplay muted loop playsinline preload="auto"></video>
         <iframe
             class="yt-bg-iframe"
             id="yt-background-player"
-            src="https://www.youtube.com/embed/NnY4IhHhWPE?mute=1&amp;controls=0&amp;modestbranding=1&amp;disablekb=1&amp;fs=0&amp;iv_load_policy=3&amp;playsinline=1&amp;enablejsapi=1"
-            title="Bed Bug Guru background video"
+            src="https://www.youtube.com/embed/NnY4IhHhWPE?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=NnY4IhHhWPE&amp;controls=0&amp;modestbranding=1&amp;disablekb=1&amp;fs=0&amp;iv_load_policy=3&amp;playsinline=1&amp;rel=0&amp;enablejsapi=1"
+            title="bed bug guru background video"
             tabindex="-1"
             allow="autoplay; encrypted-media; picture-in-picture">
         </iframe>
@@ -35,15 +46,16 @@
 
     <main>
         <section id="home" class="hero page-section" aria-labelledby="hero-title">
-            <h1 id="hero-title" class="visually-hidden">Bed Bug Guru</h1>
-            <button class="hero-logo-button" type="button" aria-label="Bed Bug Guru logo; turn background video audio on">
+            <h1 id="hero-title" class="visually-hidden">bed bug guru</h1>
+            <button class="hero-logo-button" type="button" aria-label="bed bug guru logo; turn background video audio on">
                 <img class="hero-logo" src="images/bbglogo.png" alt="">
             </button>
             <figure class="hero-photo">
-                <img src="images/bed-bug-guru-live-photo.jpg" alt="Bed Bug Guru live band photo in San Francisco">
+                <img src="images/bed-bug-guru-live-photo.jpg" alt="bed bug guru live band photo in San Francisco">
                 <figcaption class="photo-credit">Photo by Chloe Dasilva</figcaption>
             </figure>
         </section>
+
 
         <nav class="direction-nav" aria-label="Main navigation">
             <a class="glitch-hover" href="#home">Home</a>
@@ -84,10 +96,10 @@
                 </header>
                 <a class="release-link glitch-hover" href="https://bedbugguru.bandcamp.com/" target="_blank" rel="noopener noreferrer" aria-label="Listen to Double Scoop on Bandcamp">
                     <img src="https://assets.bigcartel.com/product_images/425018040/double+scoop+album.jpeg?auto=format&amp;fit=max&amp;w=1400"
-                        alt="Bed Bug Guru - Double Scoop album artwork" loading="lazy">
+                        alt="bed bug guru - Double Scoop album artwork" loading="lazy">
                     <span class="release-action">Listen on Bandcamp</span>
                 </a>
-                <p class="release-description">Our debut album, recorded live to tape at Atomic Garden in Oakland, California, by Jack Shirley. Released November 7, 2025 on Superbloom Records. You’re already listening to it.</p>
+                <p class="release-description">The debut album from bed bug guru. It was recorded live-to-tape over four days at The Atomic Garden in Oakland, California, by engineer Jack Shirley. Released November 7, 2025, on Superbloom Records. It includes early songs alongside new studio material. Video by Jake Faiella playing in the background.</p>
             </article>
             <article class="release-group" aria-labelledby="singles-title">
                 <header class="release-header">
@@ -128,28 +140,32 @@
                             <a href="https://bedbugguru.bandcamp.com/track/tightrope" target="_blank" rel="noopener noreferrer" class="bandcamp-link">Listen on Bandcamp</a>
                         </li>
                     </ol>
-                    <p class="release-description">Our first four singles, released in 2022–2023: “Brand New” and “Expired” were recorded at home by Shane Malone, and mixed and mastered by Taylor Paul Neal. “Hazy” and “Tightrope” were recorded at Pine Studios in Murray Hill, Jacksonville, Florida, by Drew Portalatin, who also mixed and mastered them.</p>
+                    <p class="release-description">The band’s first four songs, released between 2022 and 2023. “Brand New” and “Expired” were recorded at home by Shane Malone in Gainesville, FL, and Mountain View, CA, respectively, with both mixed and mastered by Taylor Paul Neal. “Hazy” and “Tightrope” were recorded, mixed, and mastered by Drew Portalatin at Pine Studios in Murray Hill, Jacksonville, FL.</p>
                 </div>
             </article>
         </section>
 
         <section id="merch" class="page-section content-section" aria-labelledby="merch-title">
             <h2 id="merch-title" class="section-title">Merch</h2>
+            <p class="section-subtitle">Ships in 1-2 weeks</p>
             <div class="merch-grid">
                 <article class="merch-card">
-                    <img src="https://assets.bigcartel.com/product_images/425018040/double+scoop+album.jpeg?auto=format&amp;fit=max&amp;w=1400" alt="Bed Bug Guru Double Scoop vinyl artwork" loading="lazy">
+                    <img src="https://assets.bigcartel.com/product_images/425018040/double+scoop+album.jpeg?auto=format&amp;fit=max&amp;w=1400" alt="bed bug guru Double Scoop vinyl artwork" loading="lazy">
                     <h3>Double Scoop Vinyl</h3>
+                    <p class="merch-description">The debut album <em>Double Scoop</em>, pressed on 12" dark purple 180g heavy vinyl. Artwork and layout designed by Jake Faiella.</p>
                     <a href="https://bed-bug-guru.bigcartel.com/product/double-scoop-vinyl" target="_blank" rel="noopener noreferrer">View &amp; buy</a>
                 </article>
                 <article class="merch-card">
-                    <img src="https://assets.bigcartel.com/product_images/425016705/IMG_5161.jpeg?auto=format&amp;fit=max&amp;w=1400" alt="Bed Bug Guru Tee 01" loading="lazy">
-                    <h3>BBG Tee 01</h3>
-                    <a href="https://bed-bug-guru.bigcartel.com/product/bbg-tee-01" target="_blank" rel="noopener noreferrer">View &amp; buy</a>
+                    <img src="https://assets.bigcartel.com/product_images/425016705/IMG_5161.jpeg?auto=format&amp;fit=max&amp;w=1400" alt="bed bug guru 01 ringer tee" loading="lazy">
+                    <h3>01 Ringer Tee</h3>
+                    <p class="merch-description">The first BBG graphic, screenprinted on a classic grey ringer tee. Artwork by Jake Knoechel.</p>
+                    <a href="https://bed-bug-guru.bigcartel.com/product/01-ringer-tee" target="_blank" rel="noopener noreferrer">View &amp; buy</a>
                 </article>
                 <article class="merch-card">
-                    <img src="https://assets.bigcartel.com/product_images/425018106/Totes+Mock.png?auto=format&amp;fit=max&amp;w=1400" alt="Bed Bug Guru Tote Bag 04 merchandise" loading="lazy">
-                    <h3>Tote Bag 04</h3>
-                    <a href="https://bed-bug-guru.bigcartel.com/product/tote-bag-04-design" target="_blank" rel="noopener noreferrer">View &amp; buy</a>
+                    <img src="https://assets.bigcartel.com/product_images/425018106/Totes+Mock.png?auto=format&amp;fit=max&amp;w=1400" alt="bed bug guru 04 tote bag" loading="lazy">
+                    <h3>04 Tote Bag</h3>
+                    <p class="merch-description">The fourth BBG graphic, screenprinted on a purple canvas tote. Artwork by Jake Knoechel.</p>
+                    <a href="https://bed-bug-guru.bigcartel.com/product/04-tote-bag" target="_blank" rel="noopener noreferrer">View &amp; buy</a>
                 </article>
             </div>
         </section>
@@ -157,18 +173,18 @@
         <section id="contact" class="page-section content-section" aria-labelledby="contact-title">
             <h2 id="contact-title" class="section-title">Contact</h2>
             <address class="contact-details">
-                <a href="https://www.instagram.com/bedbugguru/" target="_blank" rel="noopener noreferrer">Message us on Instagram</a>
+                <span class="contact-email">bedbugguru666@gmail.com</span>
                 <span>San Francisco, CA</span>
             </address>
-            <div class="press-photo-carousel" role="region" aria-label="Bed Bug Guru press photos">
+            <div class="press-photo-carousel" role="region" aria-label="bed bug guru press photos">
                 <button class="press-photo-arrow previous" type="button" aria-label="Previous photo">‹</button>
                 <div class="press-photo-stage">
                     <figure class="press-photo" aria-hidden="false">
-                        <img src="images/press-live-photo-03.jpg" alt="Bed Bug Guru performing live in a dark room with projected video" loading="lazy">
+                        <img src="images/press-live-photo-03.jpg" alt="bed bug guru performing live in a dark room with projected video" loading="lazy">
                         <figcaption class="press-photo-credit">Photo by Chloe Dasilva</figcaption>
                     </figure>
                     <figure class="press-photo" aria-hidden="true" hidden>
-                        <img src="images/press-live-photo-02.jpg" alt="Bed Bug Guru performing live under green and purple stage lights" loading="lazy">
+                        <img src="images/press-live-photo-02.jpg" alt="bed bug guru performing live under green and purple stage lights" loading="lazy">
                         <figcaption class="press-photo-credit">Photo by Chloe Dasilva</figcaption>
                     </figure>
                     <figure class="press-photo" aria-hidden="true" hidden>
@@ -176,13 +192,13 @@
                         <figcaption class="press-photo-credit">Photo by Chloe Dasilva</figcaption>
                     </figure>
                     <figure class="press-photo" aria-hidden="true" hidden>
-                        <img src="images/bed-bug-guru-live-photo.jpg" alt="Bed Bug Guru live band photo in San Francisco" loading="lazy">
+                        <img src="images/bed-bug-guru-live-photo.jpg" alt="bed bug guru live band photo in San Francisco" loading="lazy">
                         <figcaption class="press-photo-credit">Photo by Chloe Dasilva</figcaption>
                     </figure>
                 </div>
                 <button class="press-photo-arrow next" type="button" aria-label="Next photo">›</button>
             </div>
-            <nav class="streaming-links contact-social-links" aria-label="Follow Bed Bug Guru">
+            <nav class="streaming-links contact-social-links" aria-label="Follow bed bug guru">
                 <a class="glitch-hover" href="https://bedbugguru.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</a>
                 <a class="glitch-hover" href="https://open.spotify.com/search/Bed%20Bug%20Guru" target="_blank" rel="noopener noreferrer">Spotify</a>
                 <a class="glitch-hover" href="https://music.apple.com/us/artist/bed-bug-guru/1629092367" target="_blank" rel="noopener noreferrer">Apple Music</a>
@@ -192,11 +208,13 @@
         </section>
     </main>
 
-    <footer class="site-footer">© BBG 2026</footer>
+    <footer class="site-footer"><img class="footer-butterfree" src="images/butterfree.png" alt="" width="96">
+        <div>© BBG 2026</div></footer>
     <dialog class="flyer-viewer" aria-label="Full-size flyer preview">
         <button class="flyer-viewer-close" type="button" aria-label="Close flyer preview">×</button>
         <img class="flyer-viewer-image" alt="">
     </dialog>
+    <script src="loader.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
