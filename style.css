@@ -1313,3 +1313,11 @@ html {
         background: #0c0a10;
     }
 }
+
+html {
+    transition: filter 300ms ease;
+}
+
+html.is-inverted {
+    filter: invert(1);
+}

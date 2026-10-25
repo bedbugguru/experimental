@@ -313,6 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const directionNav = document.querySelector('.direction-nav');
     document.querySelector('.hero-logo-button')?.addEventListener('click', () => {
+        document.documentElement.classList.toggle('is-inverted');
         if (audioToggle && !audioToggle.disabled) {
             audioToggle.click();
         }
