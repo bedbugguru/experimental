@@ -264,23 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ['touchend', 'pointerup', 'click', 'keydown'].forEach(type =>
             window.addEventListener(type, startOnGesture, { passive: true }));
 
-        let audioChosen = false;
-        const autoUnmute = () => {
-            if (audioChosen || !videoPlayer || !videoMuted || prefersReducedMotion.matches) {
-                return;
-            }
-            audioChosen = true;
-            videoMuted = false;
-            videoPlayer.unMute();
-            videoPlayer.playVideo();
-            audioToggle.setAttribute('aria-label', 'Turn background video audio off');
-            audioToggle.setAttribute('aria-pressed', 'true');
-        };
-        ['touchend', 'pointerup', 'click', 'keydown'].forEach(type =>
-            window.addEventListener(type, autoUnmute, { passive: true }));
-
         audioToggle.addEventListener('click', () => {
-            audioChosen = true;
             if (!videoPlayer) {
                 return;
             }
