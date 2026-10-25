@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const directionNav = document.querySelector('.direction-nav');
     document.querySelector('.hero-logo-button')?.addEventListener('click', () => {
-        if (audioToggle && !audioToggle.disabled && audioToggle.getAttribute('aria-pressed') !== 'true') {
+        if (audioToggle && !audioToggle.disabled) {
             audioToggle.click();
         }
     });
