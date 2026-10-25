@@ -1298,3 +1298,7 @@ html {
         background: #2a2226 url("images/video-poster.jpg") center / cover no-repeat;
     }
 }
+
+.audio-toggle {
+    z-index: 100001;
+}
