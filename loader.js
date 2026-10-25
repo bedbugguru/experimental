@@ -1,6 +1,6 @@
 (function () {
     const WORD = 'bedbugguru';
-    const BEAT = 0.26;
+    const BEAT = 0.38;
     const ASPECT = 0.55, JAW_ROW = 38, MAX_OPEN = 5;
     const MIN_MS = 2800, DISSOLVE_MS = 1400;
     const loader = document.getElementById('skull-loader');
@@ -25,7 +25,9 @@
     function draw(now) {
         const t = (now - start) / 1000;
         const tick = Math.floor(t * 14);
-        const hit = Math.sin(t / BEAT * Math.PI) ** 2 * (0.8 + 0.2 * Math.sin(t * 1.7));
+        const phase = t / BEAT + 0.45 * Math.sin(t * 2.3) + 0.25 * Math.sin(t * 5.1);
+        const amp = 0.55 + 0.45 * Math.abs(Math.sin(Math.floor(phase) * 12.9898));
+        const hit = Math.sin(phase * Math.PI) ** 2 * amp;
         const open = reduce ? 0 : Math.round(hit * MAX_OPEN);
         const shake = 0;
         const p = dissolveAt ? Math.min(1, (now - dissolveAt) / DISSOLVE_MS) : -1;
