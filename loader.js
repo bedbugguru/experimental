@@ -28,7 +28,7 @@
         const phase = t / BEAT + 0.1 * Math.sin(t * 2.3);
         const amp = 0.85 + 0.15 * Math.abs(Math.sin(Math.floor(phase) * 12.9898));
         const hit = Math.sin(phase * Math.PI) ** 2 * amp;
-        const open = reduce ? 0 : Math.round(hit * MAX_OPEN);
+        const open = 0;
         const shake = 0;
         const p = dissolveAt ? Math.min(1, (now - dissolveAt) / DISSOLVE_MS) : -1;
         const rows = [];
