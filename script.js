@@ -312,16 +312,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const directionNav = document.querySelector('.direction-nav');
-    let logoAudioDone = false;
     document.querySelector('.hero-logo-button')?.addEventListener('click', () => {
         document.documentElement.classList.toggle('is-inverted');
-        if (!logoAudioDone && audioToggle && !audioToggle.disabled) {
-            logoAudioDone = true;
+    });
+
+    // Clicking anywhere on the background video container toggles sound
+    const bgContainer = document.querySelector('.full-bg-video-container');
+    bgContainer?.addEventListener('click', event => {
+        if (event.target === bgContainer || event.target.classList.contains('bg-loop') || event.target.classList.contains('full-bg-overlay')) {
+            audioToggle?.click();
+        }
+    });
+
+    // Auto-turn on audio on first user gesture anywhere on page
+    let autoAudioDone = false;
+    const startAudioOnFirstGesture = () => {
+        if (!autoAudioDone && audioToggle && !audioToggle.disabled) {
+            autoAudioDone = true;
             if (audioToggle.getAttribute('aria-pressed') !== 'true') {
                 audioToggle.click();
             }
         }
-    });
+    };
+    ['pointerdown', 'keydown', 'touchstart'].forEach(type =>
+        window.addEventListener(type, startAudioOnFirstGesture, { passive: true, once: true }));
 
     function navigateToSection(target) {
         if (!target) {

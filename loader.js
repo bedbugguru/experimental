@@ -2,7 +2,7 @@
     const WORD = 'bedbugguru';
     const BEAT = 0.3;
     const ASPECT = 0.55, JAW_ROW = 38, MAX_OPEN = 5;
-    const MIN_MS = 2800, DISSOLVE_MS = 1400;
+    const MIN_MS = 3000, DISSOLVE_MS = 1000;
     const loader = document.getElementById('skull-loader');
     const pre = document.getElementById('skull');
     const bg = loader && loader.querySelector('.skull-bg');

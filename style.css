@@ -1323,3 +1323,40 @@ html {
 html.is-inverted {
     filter: invert(1);
 }
+
+/* Move photo credits outside of picture */
+.hero-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.photo-credit {
+    position: static;
+    margin-top: 6px;
+    padding: 0 4px;
+    color: var(--muted);
+    font-size: 0.65rem;
+    text-shadow: none;
+}
+
+.press-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.press-photo-credit {
+    position: static;
+    margin-top: 6px;
+    padding: 0 4px;
+    color: var(--muted);
+    font-size: 0.65rem;
+    text-shadow: none;
+}
+
+/* Background click toggling sound cursor */
+.full-bg-video-container {
+    pointer-events: auto;
+    cursor: url("images/skull.png") 16 16, pointer;
+}
