@@ -312,10 +312,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const directionNav = document.querySelector('.direction-nav');
+    let logoAudioDone = false;
     document.querySelector('.hero-logo-button')?.addEventListener('click', () => {
         document.documentElement.classList.toggle('is-inverted');
-        if (audioToggle && !audioToggle.disabled) {
-            audioToggle.click();
+        if (!logoAudioDone && audioToggle && !audioToggle.disabled) {
+            logoAudioDone = true;
+            if (audioToggle.getAttribute('aria-pressed') !== 'true') {
+                audioToggle.click();
+            }
         }
     });
 
