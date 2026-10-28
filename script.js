@@ -336,6 +336,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let scrollFrame = 0;
+    let isAutoScrolling = false;
+
     function smoothScrollTo(top) {
         cancelAnimationFrame(scrollFrame);
         const start = window.scrollY;
@@ -345,21 +347,84 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top, left: 0, behavior: 'instant' });
             return;
         }
-        const duration = Math.min(1800, 700 + Math.abs(distance) * 0.35);
+        // Seamless quintic easing for ultra-buttery glide
+        const duration = Math.min(1400, 500 + Math.abs(distance) * 0.28);
         const startTime = performance.now();
-        const ease = t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
-        const cancel = () => cancelAnimationFrame(scrollFrame);
+        const ease = t => (--t) * t * t * t * t + 1; // ease-out quint: glides to a silky stop
+        isAutoScrolling = true;
+
+        const cancel = () => {
+            cancelAnimationFrame(scrollFrame);
+            isAutoScrolling = false;
+        };
         ['wheel', 'touchstart', 'keydown'].forEach(type =>
             window.addEventListener(type, cancel, { once: true, passive: true }));
+
         const step = now => {
-            const t = Math.min(1, (now - startTime) / duration);
+            const elapsed = now - startTime;
+            const t = Math.min(1, elapsed / duration);
             window.scrollTo({ top: start + distance * ease(t), left: 0, behavior: 'instant' });
             if (t < 1) {
                 scrollFrame = requestAnimationFrame(step);
+            } else {
+                isAutoScrolling = false;
             }
         };
         scrollFrame = requestAnimationFrame(step);
     }
+
+    // Seamless scroll inertia / momentum assist for mouse wheels
+    (function initSeamlessScroll() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        // Check for touch device — native momentum is already great on touch
+        const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        let targetY = window.scrollY;
+        let currentY = window.scrollY;
+        let animating = false;
+        const friction = 0.88;
+        const stepSize = 1;
+
+        window.addEventListener('wheel', event => {
+            // Only enhance discrete mouse wheels, skip precision trackpads with small deltaMode or ctrlKey (pinch)
+            if (event.ctrlKey || isAutoScrolling) return;
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            if (maxScroll <= 0) return;
+
+            // Keep target clamped
+            targetY = Math.max(0, Math.min(maxScroll, (animating ? targetY : window.scrollY) + event.deltaY * 1.15));
+            if (!animating) {
+                animating = true;
+                currentY = window.scrollY;
+                requestAnimationFrame(render);
+            }
+        }, { passive: true });
+
+        function render() {
+            if (isAutoScrolling) {
+                animating = false;
+                return;
+            }
+            const diff = targetY - currentY;
+            if (Math.abs(diff) < 0.5) {
+                currentY = targetY;
+                window.scrollTo(0, currentY);
+                animating = false;
+                return;
+            }
+            currentY += diff * (1 - friction);
+            window.scrollTo(0, currentY);
+            if (animating) {
+                requestAnimationFrame(render);
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!animating && !isAutoScrolling) {
+                targetY = window.scrollY;
+                currentY = window.scrollY;
+            }
+        }, { passive: true });
+    })();
 
     directionNav?.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', event => {
